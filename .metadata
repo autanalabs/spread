@@ -7,4 +7,4 @@ version:
   revision: "aaaea51dd2237792cfb4e823feaf42234763a16d"
   channel: "master"
 
-project_type: module
+project_type: package
