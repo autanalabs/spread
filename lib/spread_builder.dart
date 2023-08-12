@@ -3,6 +3,18 @@ import 'package:flutter/widgets.dart';
 import 'package:spread/entity.dart';
 import 'package:spread/spread_state.dart';
 
+/// The `Spread` widget invokes a build function when a state event
+/// is received. The state type is defined by the TypeParameter <T>`.
+///
+/// This widget can be used with a specific type or with the `dynamic` type. If a specific type
+/// is not provided (i.e., `dynamic`), a `stateName` must be specified. Optionally, an `Entity`
+/// can be associated with this widget.
+///
+/// The `builder` function is required and provides a means to build the widget in relation to
+/// its held data of type `T`.
+///
+/// Generic Type:
+///   - `T`: The type of data this widget deals with.
 class Spread<T> extends StatefulWidget {
   final String? stateName;
   final Entity? entity;
@@ -11,6 +23,15 @@ class Spread<T> extends StatefulWidget {
   late final bool isEntity;
   late final String typeName;
 
+  /// Constructor for the `Spread` widget.
+  ///
+  /// If `T` is `dynamic`, a `stateName` must be provided.
+  ///
+  /// Parameters:
+  ///   - `key`: An optional key for the widget.
+  ///   - `stateName`: A name for the state, required if `T` is `dynamic`.
+  ///   - `entity`: An optional associated entity.
+  ///   - `builder`: A builder function that returns a widget based on type `T`.
   Spread({super.key, this.stateName, this.entity, required this.builder}) {
     if (T == dynamic) {
       isTyped = false;
