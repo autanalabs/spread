@@ -69,6 +69,7 @@ class _SpreadState<T> extends State<Spread<T>> {
     super.initState();
      if (widget.isTyped) {
        if (widget.isEntity) {
+         this.currentState = widget.entity as T;
          SpreadState().subscribeEntity(widget.entity!, _updateState)
              .then(_onSubscriptionCreated);
 
