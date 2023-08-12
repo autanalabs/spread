@@ -1,14 +1,14 @@
 
 import 'package:flutter/material.dart';
+import 'package:spread/spread_emitter_mixin.dart';
 import '../../config.dart';
 import '../../users/user_use_cases.dart';
 import 'widgets/posts.dart';
 import 'widgets/users.dart';
 import 'states.dart';
 import 'package:spread/spread_builder.dart';
-import 'package:spread/spread_state.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatelessWidget with StateEmitter {
 
   HomePage({super.key
   });
@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // set initial states
-    SpreadState().emit<AppState>(AppState.users);
+    emit<AppState>(AppState.users);
     LoadUsersUseCase().execute();
 
     return Scaffold(
@@ -75,10 +75,10 @@ class HomePage extends StatelessWidget {
 
   void showUsers() async {
     LoadUsersUseCase().execute();
-    SpreadState().emit<AppState>(AppState.users);
+    emit<AppState>(AppState.users);
   }
 
   void showPosts() async {
-    SpreadState().emit<AppState>(AppState.posts);
+    emit<AppState>(AppState.posts);
   }
 }

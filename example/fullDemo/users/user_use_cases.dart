@@ -1,20 +1,20 @@
 
+import 'package:spread/spread_emitter_mixin.dart';
 import 'package:spread/use_case.dart';
-import 'package:spread/spread_state.dart';
 import '../services.dart';
 import 'user_states.dart';
 
-class LoadUsersUseCase implements UseCase {
+class LoadUsersUseCase with StateEmitter implements UseCase {
 
   @override
   void execute() async {
-    SpreadState().emit<UsersState>(LoadingUsers());
+    emit<UsersState>(LoadingUsers());
     Services().userService.getUsers()
     .then((users) {
-      SpreadState().emit<UsersState>(LoadedUsersSuccess(users: users));
+      emit<UsersState>(LoadedUsersSuccess(users: users));
     })
     .onError((error, stackTrace) {
-      SpreadState().emit<UsersState>(LoadedUsersFail(
+      emit<UsersState>(LoadedUsersFail(
           error: error,
           stackTrace: stackTrace
       ));

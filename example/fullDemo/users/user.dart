@@ -1,8 +1,8 @@
 
 import 'package:spread/entity.dart';
-import 'package:spread/spread_state.dart';
+import 'package:spread/spread_emitter_mixin.dart';
 
-class User implements Entity {
+class User with StateEmitter implements Entity {
   final int id;
   final String name;
   final List<UserPost> posts = List.empty(growable: true);
@@ -49,7 +49,7 @@ class User implements Entity {
       final post = await _generateRandomPost();
       print('added post');
       posts.add(post);
-      SpreadState().emitEntity<User>(this);
+      emitEntity<User>(this);
     }
   }
 

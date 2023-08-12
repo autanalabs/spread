@@ -1,6 +1,6 @@
 name: spread
 description: Easy State management
-version: 0.0.1
+version: 0.0.2
 repository: https://github.com/autanalabs/spread
 
 environment:
