@@ -7,6 +7,6 @@
 
 - Example improvements.
 
-#Release 0.03
+#Release 0.0.3
 
-- Update documentation.
+- Documentation updated.
