@@ -10,3 +10,7 @@
 #Release 0.0.3
 
 - Documentation updated.
+
+#Release 0.0.4
+
+- README updated.
