@@ -1,12 +1,11 @@
 
 import 'package:flutter/material.dart';
-import 'package:spread/spread_emitter_mixin.dart';
+import 'package:spread/spread.dart';
 import '../../config.dart';
 import '../../users/user_use_cases.dart';
 import 'widgets/posts.dart';
 import 'widgets/users.dart';
 import 'states.dart';
-import 'package:spread/spread_builder.dart';
 
 class HomePage extends StatelessWidget with StateEmitter {
 

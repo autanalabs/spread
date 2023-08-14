@@ -1,16 +1,20 @@
 
-#Release 0.0.1
+## 0.0.5
 
-- Initial version.
+* Migrate core elements (no flutter, dart only) to spread-core package.
 
-#Release 0.0.2
+## 0.0.4
 
-- Example improvements.
+* README updated.
 
-#Release 0.0.3
+## 0.0.3
 
-- Documentation updated.
+* Documentation updated.
 
-#Release 0.0.4
+## 0.0.2
 
-- README updated.
+* Example improvements.
+
+## 0.0.1
+
+* Initial version.

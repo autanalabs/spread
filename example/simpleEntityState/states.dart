@@ -1,5 +1,5 @@
 
-import 'package:spread/entity.dart';
+import 'package:spread/spread.dart';
 
 abstract class CounterState
     implements Entity {

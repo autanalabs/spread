@@ -1,9 +1,7 @@
 
 import 'package:flutter/material.dart';
-import 'package:spread/spread_builder.dart';
-import 'package:spread/spread_emitter_mixin.dart';
-import 'package:spread/spread_observer.dart';
-import 'package:spread/use_case.dart';
+import 'package:spread/src/spread_builder.dart';
+import 'package:spread/spread.dart';
 
 import '../fullDemo/pages/home/widgets/posts.dart';
 import '../fullDemo/pages/home/widgets/users.dart';

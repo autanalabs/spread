@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:spread/spread_builder.dart';
-import 'package:spread/spread_state.dart';
+import 'package:spread/spread.dart';
 import 'widgets/posts.dart';
 import 'widgets/users.dart';
 import 'states.dart';

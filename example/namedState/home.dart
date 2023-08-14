@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:spread/spread_builder.dart';
-import 'package:spread/spread_state.dart';
+import 'package:spread/spread.dart';
 import 'config.dart';
 
 class HomePage extends StatelessWidget {

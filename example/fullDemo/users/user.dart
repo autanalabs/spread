@@ -1,6 +1,5 @@
 
-import 'package:spread/entity.dart';
-import 'package:spread/spread_emitter_mixin.dart';
+import 'package:spread/spread.dart';
 
 class User with StateEmitter implements Entity {
   final int id;

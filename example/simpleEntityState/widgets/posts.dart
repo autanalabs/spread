@@ -1,7 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:spread/spread_builder.dart';
-import 'package:spread/spread_state.dart';
+import 'package:spread/spread.dart';
 import '../states.dart';
 
 class PostsPage extends StatelessWidget {

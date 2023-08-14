@@ -1,7 +1,6 @@
 
 import 'package:flutter/widgets.dart';
-import 'package:spread/entity.dart';
-import 'package:spread/spread_state.dart';
+import 'package:spread_core/spread_core.dart';
 
 /// The `Spread` widget invokes a build function when a state event
 /// is received. The state type is defined by the TypeParameter <T>`.

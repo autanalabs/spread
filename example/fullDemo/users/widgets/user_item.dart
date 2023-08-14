@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:spread/spread_builder.dart';
+import 'package:spread/src/spread_builder.dart';
 import '../user.dart';
 
 class UserItem extends StatelessWidget {

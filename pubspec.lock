@@ -120,6 +120,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
+  spread_core:
+    dependency: "direct main"
+    description:
+      name: spread_core
+      sha256: "1fc2bf7d0f4e7fdb73d150db8a16e370715d7df642a9f3288d847db5ea80e500"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   stack_trace:
     dependency: transitive
     description:

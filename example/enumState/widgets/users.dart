@@ -1,6 +1,6 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:spread/spread_builder.dart';
+import 'package:spread/src/spread_builder.dart';
 import '../states.dart';
 
 class UsersPage extends StatelessWidget {

@@ -1,6 +1,6 @@
 name: spread
 description: Easiest to implement state management for Flutter. Use any primitive, enum, type or entity as state. Support state event multicasting
-version: 0.0.4
+version: 0.0.5
 repository: https://github.com/autanalabs/spread
 
 environment:
@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  spread_core: ^0.0.5
 
 dev_dependencies:
   flutter_test:

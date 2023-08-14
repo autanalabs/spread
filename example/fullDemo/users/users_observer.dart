@@ -1,5 +1,5 @@
 
-import 'package:spread/spread_observer.dart';
+import 'package:spread/spread.dart';
 import 'user_states.dart';
 
 class UsersObserver extends SpreadObserver<UsersState> {
