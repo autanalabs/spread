@@ -1,4 +1,1 @@
-
-enum AppState {
-  users, posts
-}
+enum AppState { users, posts }

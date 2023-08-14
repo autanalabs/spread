@@ -1,3 +1,7 @@
+## 0.0.6
+
+* fix example
+* reformat sources
 
 ## 0.0.5
 

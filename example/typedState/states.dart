@@ -1,4 +1,3 @@
-
 abstract class AppState {}
 
 class UsersState extends AppState {}

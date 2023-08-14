@@ -1,4 +1,3 @@
-
 import 'package:flutter/widgets.dart';
 import 'package:spread_core/spread_core.dart';
 
@@ -46,8 +45,7 @@ class Spread<T> extends StatefulWidget {
   }
 
   @override
-  State<Spread<T>> createState() =>_SpreadState<T>();
-
+  State<Spread<T>> createState() => _SpreadState<T>();
 }
 
 class _SpreadState<T> extends State<Spread<T>> {
@@ -63,11 +61,9 @@ class _SpreadState<T> extends State<Spread<T>> {
     if (widget.isTyped) {
       if (widget.isEntity) {
         state = SpreadState().getEntity<T>(widget.entity!.entityId);
-
       } else {
         state = SpreadState().getNamed(widget.typeName);
       }
-
     } else {
       state = SpreadState().getNamed(widget.stateName!);
     }
@@ -87,21 +83,20 @@ class _SpreadState<T> extends State<Spread<T>> {
   @override
   void initState() {
     super.initState();
-     if (widget.isTyped) {
-       if (widget.isEntity) {
-         this.currentState = widget.entity as T;
-         SpreadState().subscribeEntity(widget.entity!, _updateState)
-             .then(_onSubscriptionCreated);
-
-       } else {
-         SpreadState().subscribe<T>(_updateState)
-             .then(_onSubscriptionCreated);
-       }
-
-     } else {
-        SpreadState().subscribeNamed(widget.stateName!, _updateState)
-        .then(_onSubscriptionCreated);
+    if (widget.isTyped) {
+      if (widget.isEntity) {
+        this.currentState = widget.entity as T;
+        SpreadState()
+            .subscribeEntity(widget.entity!, _updateState)
+            .then(_onSubscriptionCreated);
+      } else {
+        SpreadState().subscribe<T>(_updateState).then(_onSubscriptionCreated);
       }
+    } else {
+      SpreadState()
+          .subscribeNamed(widget.stateName!, _updateState)
+          .then(_onSubscriptionCreated);
+    }
   }
 
   @override

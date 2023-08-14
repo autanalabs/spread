@@ -24,7 +24,7 @@ Include the library in your pubspec.yaml:
 ```yaml
 
 dependencies:
-   spread: ^0.0.4
+   spread: ^0.0.6
 ```
 
 #### Then run:

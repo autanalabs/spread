@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:spread/spread.dart';
 import 'widgets/posts.dart';
@@ -10,8 +9,7 @@ class HomePage extends StatelessWidget {
   final UserCounterState users = UserCounterState(id: 'users');
   final PostCounterState posts = PostCounterState(id: 'posts');
 
-  HomePage({super.key
-  });
+  HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,54 +22,56 @@ class HomePage extends StatelessWidget {
         bottomNavigationBar: _navigator(context),
         body: Spread<CounterState>(
           builder: _homeBody,
-        )
-    );
+        ));
   }
 
   Widget _homeBody(BuildContext context, CounterState? state) {
-    switch(state.runtimeType) {
-      case PostCounterState: {
-        return PostsPage(posts: posts);
-      }
+    switch (state.runtimeType) {
+      case PostCounterState:
+        {
+          return PostsPage(posts: posts);
+        }
       case UserCounterState:
-      default: {
-        return UsersPage(users: users);
-      }
+      default:
+        {
+          return UsersPage(users: users);
+        }
     }
   }
 
   AppBar get _appbar => AppBar(
-    title: Text(appName),
-  );
+        title: Text(appName),
+      );
 
   BottomNavigationBar _navigator(BuildContext context) => BottomNavigationBar(
-    onTap: onNavigatorTap,
-    items: const <BottomNavigationBarItem>[
-      BottomNavigationBarItem(
-        icon: Icon(Icons.account_circle),
-        label: 'Users',
-      ),
-      BottomNavigationBarItem(
-        icon: Icon(Icons.data_array),
-        label: 'Posts',
-      ),
-    ],
-  );
-
+        onTap: onNavigatorTap,
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_circle),
+            label: 'Users',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.data_array),
+            label: 'Posts',
+          ),
+        ],
+      );
 
   Future onNavigatorTap(int index) async {
     print('navigator tap: $index');
-    switch(index) {
-      case 0: {
-        users.increment();
-        SpreadState().emit<CounterState>(users);
-        break;
-      }
-      case 1: {
-        posts.increment();
-        SpreadState().emit<CounterState>(posts);
-        break;
-      }
+    switch (index) {
+      case 0:
+        {
+          users.increment();
+          SpreadState().emit<CounterState>(users);
+          break;
+        }
+      case 1:
+        {
+          posts.increment();
+          SpreadState().emit<CounterState>(posts);
+          break;
+        }
     }
   }
 }

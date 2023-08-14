@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'user_item.dart';
 import '../user_states.dart';
@@ -12,19 +11,21 @@ class UsersList extends StatelessWidget {
   Widget build(BuildContext context) {
     if (state == null) {
       return _loading();
-
     } else {
       switch (state.runtimeType) {
-        case LoadedUsersSuccess: {
-          return _userList(context, state as LoadedUsersSuccess);
-        }
-        case LoadedUsersFail: {
-          return _fail(context, state as LoadedUsersFail);
-        }
+        case LoadedUsersSuccess:
+          {
+            return _userList(context, state as LoadedUsersSuccess);
+          }
+        case LoadedUsersFail:
+          {
+            return _fail(context, state as LoadedUsersFail);
+          }
         case LoadingUsers:
-        default: {
-          return _loading();
-        }
+        default:
+          {
+            return _loading();
+          }
       }
     }
   }
@@ -35,9 +36,7 @@ class UsersList extends StatelessWidget {
     return ListView.builder(
       itemCount: state.users.length,
       itemBuilder: (BuildContext context, int index) {
-        return UserItem(
-          user: state.users[index]
-        );
+        return UserItem(user: state.users[index]);
       },
     );
   }
@@ -45,5 +44,4 @@ class UsersList extends StatelessWidget {
   Widget _fail(BuildContext context, LoadedUsersFail fail) {
     return Center(child: Text('Error: ${fail.error}'));
   }
-
 }

@@ -1,4 +1,3 @@
-
 library spread;
 
 export 'package:spread_core/spread_core.dart' show Entity;

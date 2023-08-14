@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'ports/posts_port.dart';
 import 'users/users_service.dart';
@@ -13,16 +12,10 @@ void main() {
 }
 
 void initServices() async {
-  Services().init(
-      userService: () => UserServiceImpl(
-        repository: PostsApiPort()
-    )
-  );
+  Services()
+      .init(userService: () => UserServiceImpl(repository: PostsApiPort()));
 }
 
 void initObservers() async {
   UsersObserver().selfRegister();
 }
-
-
-

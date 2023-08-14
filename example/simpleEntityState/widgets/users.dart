@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:spread/spread.dart';
 import '../states.dart';
@@ -9,7 +8,7 @@ class UsersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Center(
-      child: Column(
+          child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Spread<UserCounterState>(
@@ -25,6 +24,5 @@ class UsersPage extends StatelessWidget {
               },
               icon: const Icon(Icons.add_circle))
         ],
-      )
-  );
+      ));
 }

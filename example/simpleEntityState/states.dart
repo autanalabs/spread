@@ -1,16 +1,15 @@
-
 import 'package:spread/spread.dart';
 
-abstract class CounterState
-    implements Entity {
+abstract class CounterState implements Entity {
   final String id;
   int _count = 0;
 
   CounterState(this.id);
 
   void increment() {
-    _count ++;
+    _count++;
   }
+
   int get count => _count;
 
   @override

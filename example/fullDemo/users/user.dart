@@ -1,4 +1,3 @@
-
 import 'package:spread/spread.dart';
 
 class User with StateEmitter implements Entity {
@@ -8,23 +7,15 @@ class User with StateEmitter implements Entity {
 
   User({required this.id, required this.name});
 
-  dynamic toDynamic() => {
-    'id': id,
-    'name': name
-  };
+  dynamic toDynamic() => {'id': id, 'name': name};
 
-  static User fromDynamic(dynamic user) => User(
-      id: user['id'],
-      name: user['name']
-  );
-
+  static User fromDynamic(dynamic user) =>
+      User(id: user['id'], name: user['name']);
 
   @override
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other is User
-        && other.id == id
-        && other.name == name;
+    return other is User && other.id == id && other.name == name;
   }
 
   @override
@@ -38,13 +29,13 @@ class User with StateEmitter implements Entity {
   @override
   String get entityId => id.toString();
 
-  User generatePosts()  {
+  User generatePosts() {
     _generateRandomPosts();
     return this;
   }
 
   void _generateRandomPosts() async {
-    for(int i=0; i< 100; i++) {
+    for (int i = 0; i < 100; i++) {
       final post = await _generateRandomPost();
       print('added post');
       posts.add(post);
@@ -57,8 +48,7 @@ class User with StateEmitter implements Entity {
         const Duration(
           seconds: 1,
         ),
-            () => UserPost(content: 'random content')
-    );
+        () => UserPost(content: 'random content'));
   }
 }
 

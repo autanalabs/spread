@@ -1,4 +1,3 @@
-
 import 'user.dart';
 
 abstract class UsersState {}

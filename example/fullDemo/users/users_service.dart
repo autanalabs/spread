@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'user.dart';
 import '../ports/posts_port.dart';
@@ -13,7 +12,7 @@ class UserServiceImpl implements UserService {
   UserServiceImpl({required this.repository});
 
   @override
-  Future <List<User>> getUsers() async {
-   return repository.findAllUsers();
+  Future<List<User>> getUsers() async {
+    return repository.findAllUsers();
   }
 }

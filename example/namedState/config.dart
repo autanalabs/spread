@@ -1,4 +1,3 @@
-
 const appName = 'Spread demo: namedState';
 const homeRoute = '/';
 const loginRoute = '/login';
