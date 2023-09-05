@@ -24,7 +24,7 @@ Include the library in your pubspec.yaml:
 ```yaml
 
 dependencies:
-   spread: ^0.0.6
+   spread: ^0.0.8
 ```
 
 #### Then run:
@@ -36,24 +36,40 @@ pub get
 
 #### Basic Usage
 
-Define a state entity:  
-
+Define a entity state and create a Spread widget subscribed to that entity with conditional build.
 
 ```dart
-import 'package:spread/entity.dart';
+import 'package:spread/spread.dart';
 
 class User implements Entity {
   final String id;
   final String name;
+  final List<UserPost> posts = List.empty(growable: true);
 
   User({required this.id, required this.name});
 
   @override
   String get entityId => id;
 }
+
+class UserItem extends StatelessWidget {
+  final User user;
+
+  const UserItem({super.key, required this.user});
+
+    @override
+    Widget build(BuildContext context) {
+      return Spread<User>(
+          entity: user,
+          stateCondition: (User? entity) => entity!.posts.length.isEven,
+          builder: (BuildContext context, User? entity) {
+            return Text('- posts: ${entity!.posts.length.toString()}');
+          });
+    }
+}
 ```
 
-and/or Define a typed entity:
+Define a typed entity and Create a Spread Widget subscribed to inherited type states.
 
 
 ```dart
@@ -75,26 +91,61 @@ class LoadedUsersFail extends UsersState {
 
   LoadedUsersFail({required this.error, required this.stackTrace});
 }
+
+class UsersPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) =>
+      Spread<UsersState>(builder: (BuildContext context, UsersState? state) {
+        if (state == null) {
+          return _loading();
+        } else {
+          switch (state.runtimeType) {
+            case LoadedUsersSuccess:
+              {
+                return _userList(context, state as LoadedUsersSuccess);
+              }
+            case LoadedUsersFail:
+              {
+                return _fail(context, state as LoadedUsersFail);
+              }
+            case LoadingUsers:
+            default:
+              {
+                return _loading();
+              }
+          }
+        }
+      });
+  Widget _loading() => const Center(child: CircularProgressIndicator());
+}
 ```
 
-Create a Spread widget subscribed to a state change:
+Create a Spread widget subscribed to a enum state change:
 
 ```dart
-@override
-Widget build(BuildContext context) {
+
+enum AppState { users, posts }
+
+class HomePage extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
     return Spread<AppState>(
       builder: _homeBody,
     );
-}
+  }
 
-Widget _homeBody(BuildContext context, AppState? state) {
-  switch(state) {
-    case AppState.posts: {
-      return PostsPage();
-    }
-    case AppState.users:
-    default: {
-      return UsersPage();
+  Widget _homeBody(BuildContext context, AppState? state) {
+    switch (state) {
+      case AppState.posts:
+        {
+          return PostsPage();
+        }
+      case AppState.users:
+      default:
+        {
+          return UsersPage();
+        }
     }
   }
 }
@@ -122,11 +173,11 @@ Extend from the SpreadObserver:
 ```dart
 import 'package:spread/spread.dart';
 
-class UserObserver extends SpreadObserver {
-
+class UsersObserver extends SpreadObserver<UsersState> {
+  
   @override
-  void onState(User user) {
-    print('User updated: ${user.name}');
+  onState(UsersState state) {
+    print("UsersObserver Observed: ${state.toString()}");
   }
 }
 ```
