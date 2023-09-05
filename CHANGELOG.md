@@ -1,3 +1,8 @@
+## 0.0.8
+
+* reformat sources
+* API doc improvements
+
 ## 0.0.7
 
 * Implement conditional update of state: Spread Widget constructor now optionally receives a state Condition Function. This function is evaluated on each state change.

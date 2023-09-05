@@ -11,15 +11,30 @@ import 'package:spread_core/spread_core.dart';
 /// The `builder` function is required and provides a means to build the widget in relation to
 /// its held data of type `T`.
 ///
+/// Optionally, you can provide state condition function to control if the widget must be rebuilt or not.
+///
 /// Generic Type:
 ///   - `T`: The type of data this widget deals with.
 class Spread<T> extends StatefulWidget {
+  /// (optional) The state name to observe for changes
   final String? stateName;
+
+  /// (optional) The entity object to observe for changes
   final Entity? entity;
+
+  /// Widget builder function
   final Widget Function(BuildContext, T?) builder;
+
+  /// Condition function to control if the widget must be rebuilt or not.
   late final bool Function(T?) _stateCondition;
+
+  /// returns true if the observed state is an object
   late final bool isTyped;
+
+  /// returns true if the observed state inherits from Entity class
   late final bool isEntity;
+
+  /// returns the name for the class of the State.
   late final String typeName;
 
   /// Constructor for the `Spread` widget.
@@ -32,8 +47,12 @@ class Spread<T> extends StatefulWidget {
   ///   - `entity`: An optional associated entity.
   ///   - `builder`: A builder function that returns a widget based on type `T`.
   ///   - `stateCondition`: A predicate to update state conditionally. This function is evaluated on each state change.
-  Spread({super.key, this.stateName, this.entity, required this.builder,
-    bool Function(T?)? stateCondition}) {
+  Spread(
+      {super.key,
+      this.stateName,
+      this.entity,
+      required this.builder,
+      bool Function(T?)? stateCondition}) {
     if (T == dynamic) {
       isTyped = false;
       typeName = "dynamic";
@@ -75,7 +94,7 @@ class _SpreadState<T> extends State<Spread<T>> {
   }
 
   void _updateState(dynamic state) {
-    if(widget._stateCondition.call(state) == true) {
+    if (widget._stateCondition.call(state) == true) {
       setState(() {
         currentState = state;
       });
