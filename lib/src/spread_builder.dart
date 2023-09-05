@@ -17,6 +17,7 @@ class Spread<T> extends StatefulWidget {
   final String? stateName;
   final Entity? entity;
   final Widget Function(BuildContext, T?) builder;
+  late final bool Function(T?) _stateCondition;
   late final bool isTyped;
   late final bool isEntity;
   late final String typeName;
@@ -30,7 +31,9 @@ class Spread<T> extends StatefulWidget {
   ///   - `stateName`: A name for the state, required if `T` is `dynamic`.
   ///   - `entity`: An optional associated entity.
   ///   - `builder`: A builder function that returns a widget based on type `T`.
-  Spread({super.key, this.stateName, this.entity, required this.builder}) {
+  ///   - `stateCondition`: A predicate to update state conditionally. This function is evaluated on each state change.
+  Spread({super.key, this.stateName, this.entity, required this.builder,
+    bool Function(T?)? stateCondition}) {
     if (T == dynamic) {
       isTyped = false;
       typeName = "dynamic";
@@ -42,6 +45,7 @@ class Spread<T> extends StatefulWidget {
       typeName = 'type:${T.toString()}';
       isEntity = entity != null;
     }
+    _stateCondition = stateCondition ?? (_) => true;
   }
 
   @override
@@ -71,9 +75,13 @@ class _SpreadState<T> extends State<Spread<T>> {
   }
 
   void _updateState(dynamic state) {
-    setState(() {
+    if(widget._stateCondition.call(state) == true) {
+      setState(() {
+        currentState = state;
+      });
+    } else {
       currentState = state;
-    });
+    }
   }
 
   void _onSubscriptionCreated(Subscription subscription) {

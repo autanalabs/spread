@@ -17,6 +17,7 @@ class UserItem extends StatelessWidget {
             const SizedBox(width: 10),
             Spread<User>(
                 entity: user,
+                stateCondition: (User? entity) => entity!.posts.length.isEven,
                 builder: (BuildContext context, User? entity) {
                   return Text('- posts: ${entity!.posts.length.toString()}');
                 })
